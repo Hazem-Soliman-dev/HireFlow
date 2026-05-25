@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { closeJob, reopenJob } from "@/app/actions/jobs";
@@ -10,7 +11,7 @@ import ScheduleInterviewForm from "@/components/interviews/ScheduleInterviewForm
 import { stageOrder } from "@/lib/roles";
 import { requireRole } from "@/lib/auth";
 import { getOrCreateDemoUser } from "@/lib/demo";
-import { Building2, MapPin, Briefcase, CalendarRange, Users2, XCircle, Calendar, Clock, Video, Sparkles } from "lucide-react";
+import { Building2, MapPin, Briefcase, CalendarRange, Users2, XCircle, Calendar, Clock, Video, Sparkles, ArrowLeft } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -83,9 +84,18 @@ export default async function JobDetailPage({
     const hasApplied = !!myCandidate;
 
     return (
-      <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+      <div className="w-full max-w-full min-w-0 overflow-hidden space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+        <div className="flex">
+          <Link
+            href="/jobs"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200/80 bg-white px-3.5 py-2.5 text-xs font-bold text-slate-650 shadow-sm transition-all hover:border-slate-350 hover:text-slate-900 hover:bg-slate-50/40 active:scale-95 duration-200 cursor-pointer group"
+          >
+            <ArrowLeft className="h-3.5 w-3.5 text-slate-450 transition-transform duration-200 group-hover:-translate-x-0.5" />
+            <span>Back to Positions</span>
+          </Link>
+        </div>
         {/* Job Info Header Card */}
-        <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-premium">
+        <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-6 sm:p-8 shadow-premium">
           <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-indigo-500/5 blur-2xl pointer-events-none" />
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="space-y-4 w-full">
@@ -93,7 +103,7 @@ export default async function JobDetailPage({
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50/70 text-indigo-600 border border-indigo-100/30 shrink-0">
                   <Briefcase className="h-4 w-4" />
                 </span>
-                <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 font-display">
+                <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 font-display">
                   {job.title}
                 </h1>
                 <span
@@ -111,14 +121,14 @@ export default async function JobDetailPage({
                   <Building2 className="h-4 w-4 text-slate-400" />
                   <span>{job.department || "General"}</span>
                 </div>
-                <span className="text-slate-350">•</span>
+                <span className="hidden sm:inline text-slate-355">•</span>
                 <div className="flex items-center gap-1.5">
                   <MapPin className="h-4 w-4 text-slate-400" />
                   <span>{job.location || "Flexible"}</span>
                 </div>
               </div>
 
-              <div className="rounded-2xl p-5 border border-slate-200/80 bg-transparent">
+              <div className="rounded-2xl p-4 sm:p-5 border border-slate-200/80 bg-transparent">
                 <h3 className="text-[10px] font-bold text-slate-450 uppercase tracking-widest mb-2 font-display">Role Description</h3>
                 <p className="text-sm leading-relaxed text-slate-600 font-sans">{job.description}</p>
               </div>
@@ -128,46 +138,88 @@ export default async function JobDetailPage({
 
         {/* Action / Stepper section */}
         {hasApplied ? (
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* Stepper Card */}
-            <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-premium space-y-6">
-              <h2 className="text-sm font-bold text-slate-950">Application Status</h2>
+            <div className="rounded-3xl border border-slate-100 bg-white p-6 sm:p-8 shadow-premium space-y-6">
+              <h2 className="text-sm font-bold text-slate-955">Application Status</h2>
 
               <div className="relative">
-                {/* Connection Line */}
-                <div className="absolute top-4 left-4 right-4 h-0.5 bg-slate-100 -z-10 hidden md:block" />
+                {/* Desktop Stepper */}
+                <div className="relative hidden md:block">
+                  {/* Connection Line */}
+                  <div className="absolute top-4 left-4 right-4 h-0.5 bg-slate-100 -z-10" />
 
-                <div className="grid gap-6 md:grid-cols-5 text-center">
-                  {stageOrder
-                    .filter(s => s.key !== "REJECTED")
-                    .map((stageItem, index) => {
-                      const stagesList = ["APPLIED", "SCREENED", "INTERVIEW", "OFFER", "HIRED"];
-                      const currentIdx = stagesList.indexOf(myCandidate.stage);
-                      const itemIdx = stagesList.indexOf(stageItem.key);
+                  <div className="grid grid-cols-5 text-center gap-4">
+                    {stageOrder
+                      .filter(s => s.key !== "REJECTED")
+                      .map((stageItem, index) => {
+                        const stagesList = ["APPLIED", "SCREENED", "INTERVIEW", "OFFER", "HIRED"];
+                        const currentIdx = stagesList.indexOf(myCandidate.stage);
+                        const itemIdx = stagesList.indexOf(stageItem.key);
 
-                      const isCompleted = itemIdx < currentIdx;
-                      const isActive = itemIdx === currentIdx;
+                        const isCompleted = itemIdx < currentIdx;
+                        const isActive = itemIdx === currentIdx;
 
-                      let dotStyle = "bg-slate-50 border-slate-200 text-slate-400";
-                      if (isCompleted) {
-                        dotStyle = "bg-emerald-500 border-emerald-500 text-white shadow-md shadow-emerald-550/20";
-                      } else if (isActive) {
-                        dotStyle = "bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-650/20";
-                      }
+                        let dotStyle = "bg-slate-50 border-slate-200 text-slate-400";
+                        if (isCompleted) {
+                          dotStyle = "bg-emerald-500 border-emerald-500 text-white shadow-md shadow-emerald-550/20";
+                        } else if (isActive) {
+                          dotStyle = "bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-650/20";
+                        }
 
-                      return (
-                        <div key={stageItem.key} className="flex flex-col items-center gap-2">
-                          <div className={`flex h-9 w-9 items-center justify-center rounded-full border-2 text-xs font-bold transition-all duration-300 ${dotStyle}`}>
-                            {isCompleted ? "✓" : index + 1}
+                        return (
+                          <div key={stageItem.key} className="flex flex-col items-center gap-2">
+                            <div className={`flex h-9 w-9 items-center justify-center rounded-full border-2 text-xs font-bold transition-all duration-300 ${dotStyle}`}>
+                              {isCompleted ? "✓" : index + 1}
+                            </div>
+                            <div>
+                              <p className={`text-xs font-bold ${isActive ? 'text-indigo-600' : isCompleted ? 'text-emerald-650' : 'text-slate-400'}`}>
+                                {stageItem.label}
+                              </p>
+                            </div>
                           </div>
-                          <div>
-                            <p className={`text-xs font-bold ${isActive ? 'text-indigo-600' : isCompleted ? 'text-emerald-650' : 'text-slate-400'}`}>
-                              {stageItem.label}
-                            </p>
+                        );
+                      })}
+                  </div>
+                </div>
+
+                {/* Mobile Stepper */}
+                <div className="relative md:hidden pl-4">
+                  {/* Vertical Connection Line */}
+                  <div className="absolute left-[33px] top-4 bottom-4 w-0.5 bg-slate-100 -z-10" />
+
+                  <div className="flex flex-col gap-6">
+                    {stageOrder
+                      .filter(s => s.key !== "REJECTED")
+                      .map((stageItem, index) => {
+                        const stagesList = ["APPLIED", "SCREENED", "INTERVIEW", "OFFER", "HIRED"];
+                        const currentIdx = stagesList.indexOf(myCandidate.stage);
+                        const itemIdx = stagesList.indexOf(stageItem.key);
+
+                        const isCompleted = itemIdx < currentIdx;
+                        const isActive = itemIdx === currentIdx;
+
+                        let dotStyle = "bg-slate-50 border-slate-200 text-slate-400";
+                        if (isCompleted) {
+                          dotStyle = "bg-emerald-500 border-emerald-500 text-white shadow-md shadow-emerald-550/20";
+                        } else if (isActive) {
+                          dotStyle = "bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-650/20";
+                        }
+
+                        return (
+                          <div key={stageItem.key} className="flex items-center gap-4">
+                            <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 text-xs font-bold transition-all duration-300 z-10 ${dotStyle}`}>
+                              {isCompleted ? "✓" : index + 1}
+                            </div>
+                            <div>
+                              <p className={`text-xs font-bold ${isActive ? 'text-indigo-600' : isCompleted ? 'text-emerald-650' : 'text-slate-400'}`}>
+                                {stageItem.label}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                  </div>
                 </div>
               </div>
 
@@ -225,7 +277,7 @@ export default async function JobDetailPage({
             </div>
 
             {/* Interviews Card for Candidate */}
-            <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-premium space-y-6">
+            <div className="rounded-3xl border border-slate-100 bg-white p-5 sm:p-6 shadow-premium space-y-6">
               <h2 className="text-sm font-bold text-slate-950">My Scheduled Interviews</h2>
               {myCandidate.interviews.length === 0 ? (
                 <div className="rounded-2xl border border-slate-100 bg-slate-50/20 p-8 text-center text-xs font-semibold text-slate-400">
@@ -301,17 +353,26 @@ export default async function JobDetailPage({
   }
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+    <div className="w-full max-w-full min-w-0 overflow-hidden space-y-6 sm:space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+      <div className="flex">
+        <Link
+          href="/jobs"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200/80 bg-white px-3.5 py-2.5 text-xs font-bold text-slate-650 shadow-sm transition-all hover:border-slate-350 hover:text-slate-900 hover:bg-slate-50/40 active:scale-95 duration-200 cursor-pointer group"
+        >
+          <ArrowLeft className="h-3.5 w-3.5 text-slate-450 transition-transform duration-200 group-hover:-translate-x-0.5" />
+          <span>Back to Positions</span>
+        </Link>
+      </div>
       {/* Job Info Header Card */}
-      <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-premium">
+      <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-6 sm:p-8 shadow-premium">
         <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-indigo-500/5 blur-2xl pointer-events-none" />
         <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-          <div className="space-y-4 flex-1">
+          <div className="space-y-4 flex-1 w-full">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50/70 text-indigo-600 border border-indigo-100/30 shrink-0">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50/70 text-indigo-605 border border-indigo-100/30 shrink-0">
                 <Briefcase className="h-4 w-4" />
               </span>
-              <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 font-display">
+              <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 font-display">
                 {job.title}
               </h1>
               <span
@@ -329,7 +390,7 @@ export default async function JobDetailPage({
                 <Building2 className="h-4 w-4 text-slate-400" />
                 <span>{job.department || "General"}</span>
               </div>
-              <span className="text-slate-350">•</span>
+              <span className="hidden sm:inline text-slate-355">•</span>
               <div className="flex items-center gap-1.5">
                 <MapPin className="h-4 w-4 text-slate-400" />
                 <span>{job.location || "Flexible"}</span>
@@ -338,23 +399,23 @@ export default async function JobDetailPage({
           </div>
 
           {canClose && (
-            <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full sm:w-auto shrink-0">
               <EditJobModal job={job} />
               {job.isOpen ? (
-                <form action={closeJob.bind(null, job.id)}>
+                <form action={closeJob.bind(null, job.id)} className="w-full sm:w-auto">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200/80 bg-white px-4 py-2.5 text-xs font-bold text-slate-600 shadow-sm transition hover:border-slate-350 hover:text-slate-900 active:scale-95 duration-200 cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200/80 bg-white px-4 py-2.5 text-xs font-bold text-slate-600 shadow-sm transition hover:border-slate-350 hover:text-slate-900 active:scale-95 duration-200 cursor-pointer"
                   >
                     <XCircle className="h-4 w-4 text-slate-450" />
                     <span>Close Position</span>
                   </button>
                 </form>
               ) : (
-                <form action={reopenJob.bind(null, job.id)}>
+                <form action={reopenJob.bind(null, job.id)} className="w-full sm:w-auto">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200/80 bg-white px-4 py-2.5 text-xs font-bold text-slate-600 shadow-sm transition hover:border-slate-355 hover:text-slate-900 active:scale-95 duration-200 cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200/80 bg-white px-4 py-2.5 text-xs font-bold text-slate-600 shadow-sm transition hover:border-slate-355 hover:text-slate-900 active:scale-95 duration-200 cursor-pointer"
                   >
                     <Sparkles className="h-4 w-4 text-emerald-500" />
                     <span>Reopen Position</span>
@@ -399,12 +460,12 @@ export default async function JobDetailPage({
       )}
 
       {/* Interview Coordinator Block */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-premium space-y-6">
+      <div className="rounded-3xl border border-slate-100 bg-white p-4 sm:p-6 shadow-premium space-y-6">
         <div className="flex items-center gap-2 border-b border-slate-50 pb-4">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-indigo-650">
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-650">
             <CalendarRange className="h-4 w-4" />
           </div>
-          <div>
+          <div className="min-w-0">
             <h2 className="text-sm font-bold text-slate-950">Interview Coordination</h2>
             <p className="text-[11px] text-slate-500 mt-0.5">Schedule reviews and send calendar invites automatically.</p>
           </div>
@@ -428,12 +489,12 @@ export default async function JobDetailPage({
       </div>
 
       {/* Candidate Pipeline Board Section */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-premium space-y-6">
+      <div className="rounded-3xl border border-slate-100 bg-white p-4 sm:p-6 shadow-premium space-y-6">
         <div className="flex items-center gap-2 border-b border-slate-50 pb-4">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-indigo-650">
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-indigo-50 text-indigo-650">
             <Users2 className="h-4 w-4" />
           </div>
-          <div>
+          <div className="min-w-0">
             <h2 className="text-sm font-bold text-slate-950">Visual Hiring Board</h2>
             <p className="text-[11px] text-slate-500 mt-0.5">Drag-and-drop applicants to advance them through stages.</p>
           </div>

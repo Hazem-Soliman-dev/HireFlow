@@ -48,9 +48,9 @@ export default function ScheduleInterviewForm({
     <form
       ref={formRef}
       action={submit}
-      className="rounded-3xl border border-slate-150 bg-slate-50/10 p-5 space-y-5 font-sans"
+      className="rounded-3xl border border-slate-150 bg-slate-50/10 p-4 sm:p-5 space-y-5 font-sans"
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 w-full">
         <div className="space-y-1.5">
           <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             Select Candidate
@@ -58,7 +58,7 @@ export default function ScheduleInterviewForm({
           <select
             name="candidateId"
             required
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           >
             <option value="">Select candidate...</option>
             {candidates.map((candidate) => (
@@ -77,7 +77,7 @@ export default function ScheduleInterviewForm({
             name="scheduledAt"
             type="datetime-local"
             required
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           />
         </div>
 
@@ -87,7 +87,7 @@ export default function ScheduleInterviewForm({
           </label>
           <select
             name="durationMinutes"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
             defaultValue="45"
           >
             <option value="30">30 minutes</option>
@@ -105,7 +105,7 @@ export default function ScheduleInterviewForm({
             name="interviewerName"
             required
             placeholder="Morgan Reed"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           />
         </div>
 
@@ -118,7 +118,7 @@ export default function ScheduleInterviewForm({
             type="email"
             required
             placeholder="manager@company.com"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           />
         </div>
 
@@ -129,7 +129,7 @@ export default function ScheduleInterviewForm({
           <input
             name="meetingLink"
             placeholder="https://meet.google.com/..."
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           />
         </div>
 
@@ -140,7 +140,7 @@ export default function ScheduleInterviewForm({
           <input
             name="location"
             placeholder="On-site • HQ Room 4A"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full min-w-0 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           />
         </div>
       </div>
@@ -151,7 +151,7 @@ export default function ScheduleInterviewForm({
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-6 py-2.5 text-xs font-bold text-white transition-all duration-250 hover:bg-indigo-650 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/15 active:scale-95 cursor-pointer"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-6 py-2.5 text-xs font-bold text-white transition-all duration-250 hover:bg-indigo-650 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/15 active:scale-95 cursor-pointer"
         >
           <CalendarPlus className="h-4 w-4" />
           <span>{pending ? "Sending Calendar Invite..." : "Send Invite"}</span>

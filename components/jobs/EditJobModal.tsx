@@ -35,7 +35,7 @@ export default function EditJobModal({
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-slate-605 transition hover:border-slate-300 hover:text-slate-950 active:scale-95 duration-200 cursor-pointer"
+        className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-slate-605 transition hover:border-slate-300 hover:text-slate-955 active:scale-95 duration-200 cursor-pointer"
       >
         <Edit2 className="h-4 w-4 text-slate-400" />
         <span>Edit Position</span>

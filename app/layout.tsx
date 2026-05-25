@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@uploadthing/react/styles.css";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {
