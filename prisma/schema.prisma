@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String      @id @default(cuid())
+  name       String
+  email      String      @unique
+  role       Role
+  jobs       Job[]       @relation("JobOwner")
+  candidates Candidate[] @relation("CandidateOwner")
+  createdAt  DateTime    @default(now())
+}
+
+model Job {
+  id          String      @id @default(cuid())
+  title       String
+  department  String?
+  location    String?
+  description String
+  isOpen      Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  closedAt    DateTime?
+  createdBy   User        @relation("JobOwner", fields: [createdById], references: [id])
+  createdById String
+  candidates  Candidate[]
+}
+
+model Candidate {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  phone       String?
+  resumeUrl   String
+  resumeText  String?
+  aiScore     Int?
+  aiFeedback  String?
+  stage       Stage    @default(APPLIED)
+  source      String?
+  appliedAt   DateTime @default(now())
+  stageUpdatedAt DateTime @default(now())
+  hiredAt     DateTime?
+  rejectedAt  DateTime?
+  job         Job      @relation(fields: [jobId], references: [id])
+  jobId       String
+  createdBy   User     @relation("CandidateOwner", fields: [createdById], references: [id])
+  createdById String
+  interviews  Interview[]
+}
+
+model Interview {
+  id              String          @id @default(cuid())
+  candidate       Candidate       @relation(fields: [candidateId], references: [id])
+  candidateId     String
+  scheduledAt     DateTime
+  durationMinutes Int             @default(45)
+  interviewerName String
+  interviewerEmail String
+  meetingLink     String?
+  location        String?
+  notes           String?
+  status          InterviewStatus @default(SCHEDULED)
+  createdAt       DateTime        @default(now())
+}
+
+enum Role {
+  ADMIN
+  RECRUITER
+  HIRING_MANAGER
+  CANDIDATE
+}
+
+enum Stage {
+  APPLIED
+  SCREENED
+  INTERVIEW
+  OFFER
+  HIRED
+  REJECTED
+}
+
+enum InterviewStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELED
+}
