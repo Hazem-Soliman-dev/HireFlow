@@ -85,41 +85,42 @@ export default async function JobDetailPage({
     return (
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
         {/* Job Info Header Card */}
-        <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-premium">
+        <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-premium">
+          <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-indigo-500/5 blur-2xl pointer-events-none" />
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="space-y-4 w-full">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-655 shrink-0">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50/70 text-indigo-600 border border-indigo-100/30 shrink-0">
                   <Briefcase className="h-4.5 w-4.5" />
                 </span>
-                <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+                <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 font-display">
                   {job.title}
                 </h1>
                 <span
-                  className={`rounded-lg px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${job.isOpen
-                    ? "bg-emerald-50 text-emerald-600 border border-emerald-100"
-                    : "bg-slate-50 text-slate-500 border border-slate-100"
+                  className={`rounded-lg px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider ${job.isOpen
+                    ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-sm"
+                    : "bg-slate-50 text-slate-400 border border-slate-150 shadow-sm"
                     }`}
                 >
                   {job.isOpen ? "Active" : "Closed"}
                 </span>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500 font-sans">
                 <div className="flex items-center gap-1.5">
-                  <Building2 className="h-4 w-4 text-slate-450" />
+                  <Building2 className="h-4 w-4 text-slate-400" />
                   <span>{job.department || "General"}</span>
                 </div>
                 <span className="text-slate-350">•</span>
                 <div className="flex items-center gap-1.5">
-                  <MapPin className="h-4 w-4 text-slate-455" />
+                  <MapPin className="h-4 w-4 text-slate-400" />
                   <span>{job.location || "Flexible"}</span>
                 </div>
               </div>
 
-              <div className="rounded-2xl bg-slate-50/50 p-4 border border-slate-100/50">
-                <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Role Description</h3>
-                <p className="text-sm leading-relaxed text-slate-600">{job.description}</p>
+              <div className="rounded-2xl bg-slate-50/40 p-4.5 border border-slate-100">
+                <h3 className="text-[10px] font-bold text-slate-450 uppercase tracking-widest mb-2 font-display">Role Description</h3>
+                <p className="text-sm leading-relaxed text-slate-600 font-sans">{job.description}</p>
               </div>
             </div>
           </div>
@@ -302,27 +303,28 @@ export default async function JobDetailPage({
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
       {/* Job Info Header Card */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-premium">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+      <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-premium">
+        <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-indigo-500/5 blur-2xl pointer-events-none" />
+        <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="space-y-4 flex-1">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-650 shrink-0">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50/70 text-indigo-600 border border-indigo-100/30 shrink-0">
                 <Briefcase className="h-4.5 w-4.5" />
               </span>
-              <h1 className="text-2xl font-bold tracking-tight text-slate-900">
+              <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 font-display">
                 {job.title}
               </h1>
               <span
-                className={`rounded-lg px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${job.isOpen
-                  ? "bg-emerald-50 text-emerald-600 border border-emerald-100"
-                  : "bg-slate-50 text-slate-500 border border-slate-100"
+                className={`rounded-lg px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider ${job.isOpen
+                  ? "bg-emerald-50 text-emerald-600 border border-emerald-100/50 shadow-sm"
+                  : "bg-slate-50 text-slate-400 border border-slate-150 shadow-sm"
                   }`}
               >
                 {job.isOpen ? "Active" : "Closed"}
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-500 font-sans">
               <div className="flex items-center gap-1.5">
                 <Building2 className="h-4 w-4 text-slate-400" />
                 <span>{job.department || "General"}</span>
@@ -342,9 +344,9 @@ export default async function JobDetailPage({
                 <form action={closeJob.bind(null, job.id)}>
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-slate-600 shadow-sm transition hover:border-slate-300 hover:text-slate-950 active:scale-95 duration-200 cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200/80 bg-white px-4 py-2.5 text-xs font-bold text-slate-600 shadow-sm transition hover:border-slate-350 hover:text-slate-900 active:scale-95 duration-200 cursor-pointer"
                   >
-                    <XCircle className="h-4 w-4 text-slate-400" />
+                    <XCircle className="h-4 w-4 text-slate-450" />
                     <span>Close Position</span>
                   </button>
                 </form>
@@ -352,7 +354,7 @@ export default async function JobDetailPage({
                 <form action={reopenJob.bind(null, job.id)}>
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-bold text-slate-600 shadow-sm transition hover:border-slate-300 hover:text-slate-950 active:scale-95 duration-200 cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200/80 bg-white px-4 py-2.5 text-xs font-bold text-slate-600 shadow-sm transition hover:border-slate-355 hover:text-slate-900 active:scale-95 duration-200 cursor-pointer"
                   >
                     <Sparkles className="h-4 w-4 text-emerald-500" />
                     <span>Reopen Position</span>
@@ -366,17 +368,17 @@ export default async function JobDetailPage({
 
         {/* Stage breakdown */}
         <div className="mt-8 border-t border-slate-50 pt-6">
-          <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Stage Counts</h4>
-          <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+          <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 font-display">Stage Counts</h4>
+          <div className="grid gap-3.5 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
             {stageOrder.map((stage) => {
               const count = job.candidates.filter((c) => c.stage === stage.key).length;
               return (
                 <div
                   key={stage.key}
-                  className="flex flex-col items-center gap-1 rounded-2xl border border-slate-100 bg-slate-50/20 py-3 text-center"
+                  className="flex flex-col items-center gap-1 rounded-2xl border border-slate-100 bg-slate-50/30 py-3 text-center transition-all duration-200 hover:border-slate-200 hover:bg-slate-50/70"
                 >
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">{stage.label}</span>
-                  <span className="text-lg font-bold text-slate-900 mt-1">
+                  <span className="text-[9px] font-bold text-slate-405 uppercase tracking-wider">{stage.label}</span>
+                  <span className="text-xl font-extrabold text-slate-900 mt-1 font-display">
                     {count}
                   </span>
                 </div>

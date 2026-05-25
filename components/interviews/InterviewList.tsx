@@ -28,7 +28,7 @@ export default function InterviewList({
   };
 
   return (
-    <div className="max-h-[380px] overflow-y-auto pr-1">
+    <div className="max-h-[380px] overflow-y-auto pr-1 font-sans">
       <div className="grid gap-4.5 sm:grid-cols-2">
         {interviews.map((interview) => {
           const when = new Date(interview.scheduledAt).toLocaleString("en-US", {
@@ -38,11 +38,11 @@ export default function InterviewList({
           return (
             <div
               key={interview.id}
-              className="flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-5 shadow-premium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card"
+              className="flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-5 shadow-premium transition-all duration-300 hover:-translate-y-1 hover:border-indigo-100/80 hover:shadow-card"
             >
               <div>
                 <div className="flex items-center justify-between gap-3">
-                  <span className="text-xs font-bold text-slate-900">
+                  <span className="text-xs font-bold text-slate-900 font-display">
                     {interview.candidate.name}
                   </span>
                   <span className={`rounded-lg px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider ${getStatusStyles(interview.status)}`}>
@@ -50,7 +50,7 @@ export default function InterviewList({
                   </span>
                 </div>
                 
-                <div className="mt-4 space-y-2 text-xs text-slate-500">
+                <div className="mt-4 space-y-2.5 text-xs text-slate-500">
                   <div className="flex items-center gap-2">
                     <Calendar className="h-3.5 w-3.5 text-slate-400" />
                     <span>{when}</span>
@@ -72,7 +72,7 @@ export default function InterviewList({
                     href={interview.meetingLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[11px] font-bold text-indigo-650 hover:underline"
+                    className="inline-flex items-center gap-1.5 text-[11px] font-bold text-indigo-600 hover:underline cursor-pointer"
                   >
                     <Video className="h-3.5 w-3.5" />
                     <span>Join Video Call</span>

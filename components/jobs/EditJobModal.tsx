@@ -52,52 +52,52 @@ export default function EditJobModal({
             </button>
 
             <div className="flex items-center gap-2 border-b border-slate-50 pb-3">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600">
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50/70 text-indigo-600 border border-indigo-100/30">
                 <Edit2 className="h-4 w-4" />
               </div>
-              <h2 className="text-sm font-bold text-slate-950">Edit Job Position</h2>
+              <h2 className="text-sm font-bold text-slate-955 font-display">Edit Job Position</h2>
             </div>
 
-            <form action={handleSubmit} className="space-y-4">
+            <form action={handleSubmit} className="space-y-4 font-sans">
               <input type="hidden" name="id" value={job.id} />
               
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                   Job Title
                 </label>
                 <input
                   name="title"
                   defaultValue={job.title}
                   required
-                  className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+                  className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
                 />
               </div>
 
               <div className="grid gap-4.5 sm:grid-cols-2">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                     Department
                   </label>
                   <input
                     name="department"
                     defaultValue={job.department ?? ""}
-                    className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                     Location
                   </label>
                   <input
                     name="location"
                     defaultValue={job.location ?? ""}
-                    className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
                   />
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                   Job Description
                 </label>
                 <textarea
@@ -105,7 +105,7 @@ export default function EditJobModal({
                   defaultValue={job.description}
                   required
                   rows={4}
-                  className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+                  className="w-full rounded-xl border border-slate-200 px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
                 />
               </div>
 
@@ -120,14 +120,14 @@ export default function EditJobModal({
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-4 py-2.5 text-xs font-bold text-slate-500 transition hover:bg-slate-105 active:scale-95 duration-200 cursor-pointer"
+                  className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-4.5 py-2.5 text-xs font-bold text-slate-500 transition hover:bg-slate-50 active:scale-95 duration-200 cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={pending}
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-bold text-white transition-all duration-200 hover:bg-indigo-600 disabled:opacity-75 hover:shadow-lg active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-5.5 py-2.5 text-xs font-bold text-white transition-all duration-250 hover:bg-indigo-650 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/15 active:scale-95 cursor-pointer"
                 >
                   {pending ? "Saving..." : "Save Changes"}
                 </button>

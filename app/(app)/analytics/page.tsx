@@ -66,14 +66,15 @@ export default async function AnalyticsPage() {
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
       {/* Page Header */}
-      <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-premium">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-650">
+      <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-8 shadow-premium">
+        <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-indigo-500/5 blur-2xl pointer-events-none" />
+        <div className="relative z-10 flex items-center gap-3.5">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50/70 text-indigo-600 border border-indigo-100/30">
             <BarChart3 className="h-5 w-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900">Analytics Insights</h1>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 font-display">Analytics Insights</h1>
+            <p className="text-xs text-slate-500 mt-0.5 font-sans">
               Track conversion efficiency, time-to-hire velocity, and candidate source performance.
             </p>
           </div>

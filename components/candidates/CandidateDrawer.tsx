@@ -108,14 +108,14 @@ export default function CandidateDrawer({
         </div>
 
         {/* Tab Buttons */}
-        <div className="flex border-b border-slate-100 bg-slate-50/30 px-6">
+        <div className="flex border-b border-slate-100 bg-slate-50/20 px-6 font-display">
           <button
             onClick={() => setActiveTab("assessment")}
             className={cn(
               "py-3 text-xs font-bold border-b-2 px-1 mr-6 transition-all cursor-pointer",
               activeTab === "assessment"
-                ? "border-indigo-600 text-indigo-600"
-                : "border-transparent text-slate-500 hover:text-slate-800"
+                ? "border-indigo-600 text-indigo-600 font-extrabold"
+                : "border-transparent text-slate-400 hover:text-slate-700"
             )}
           >
             AI Assessment
@@ -125,8 +125,8 @@ export default function CandidateDrawer({
             className={cn(
               "py-3 text-xs font-bold border-b-2 px-1 transition-all cursor-pointer",
               activeTab === "resume"
-                ? "border-indigo-600 text-indigo-600"
-                : "border-transparent text-slate-500 hover:text-slate-800"
+                ? "border-indigo-600 text-indigo-600 font-extrabold"
+                : "border-transparent text-slate-400 hover:text-slate-700"
             )}
           >
             Resume Source Text
@@ -134,7 +134,7 @@ export default function CandidateDrawer({
         </div>
 
         {/* Scrollable Body */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6">
+        <div className="flex-1 overflow-y-auto p-6 space-y-6 font-sans">
           {error && (
             <div className="flex items-center gap-2 rounded-xl bg-rose-50 border border-rose-100 p-3.5 text-xs font-bold text-rose-600">
               <AlertCircle className="h-4 w-4 shrink-0" />
@@ -149,14 +149,14 @@ export default function CandidateDrawer({
               {candidate.aiScore !== null ? (
                 <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-premium flex items-center gap-5">
                   <div className={cn(
-                    "flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-xl font-extrabold tracking-tight",
+                    "flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-xl font-extrabold tracking-tight font-display shadow-sm",
                     getScoreStyles(candidate.aiScore)
                   )}>
                     {candidate.aiScore}%
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1">
-                      <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
+                    <h4 className="text-xs font-bold text-slate-900 uppercase tracking-widest flex items-center gap-1 font-display">
+                      <Sparkles className="h-3.5 w-3.5 text-indigo-650" />
                       AI Score fit coefficient
                     </h4>
                     <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">

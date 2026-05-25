@@ -40,15 +40,15 @@ export default function SideNav() {
             key={item.href}
             href={item.href}
             className={cn(
-              "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 group active:scale-[0.98]",
+              "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold transition-all duration-250 group active:scale-[0.98]",
               isActive
-                ? "bg-indigo-50/70 border border-indigo-100/50 text-indigo-600 shadow-sm"
-                : "border border-transparent text-slate-600 hover:bg-slate-100/80 hover:text-slate-900"
+                ? "bg-indigo-50/50 border border-indigo-100/60 text-indigo-600 shadow-sm shadow-indigo-600/[0.02]"
+                : "border border-transparent text-slate-600 hover:bg-slate-100/70 hover:text-slate-900"
             )}
           >
             <Icon className={cn(
-              "h-4 w-4 transition-transform duration-200 group-hover:scale-110",
-              isActive ? "text-indigo-600" : "text-slate-400 group-hover:text-slate-600"
+              "h-4 w-4 transition-all duration-250 group-hover:scale-110",
+              isActive ? "text-indigo-600 stroke-[2.5]" : "text-slate-400 group-hover:text-slate-700"
             )} />
             <span>{item.label}</span>
           </Link>

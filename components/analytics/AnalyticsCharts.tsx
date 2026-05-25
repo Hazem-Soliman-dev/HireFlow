@@ -14,7 +14,7 @@ import {
 import { BarChart3, PieChart as PieIcon } from "lucide-react";
 
 // Vibrant, harmonious SaaS color scheme (Indigo, Sky Blue, Emerald, Violet, Amber, Rose)
-const COLORS = ["#4f46e5", "#0ea5e9", "#10b981", "#8b5cf6", "#f59e0b", "#f43f5e"];
+const COLORS = ["#6366f1", "#0ea5e9", "#10b981", "#8b5cf6", "#f59e0b", "#f43f5e"];
 
 export default function AnalyticsCharts({
   stageData,
@@ -24,14 +24,14 @@ export default function AnalyticsCharts({
   sourceData: { source: string; value: number }[];
 }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="grid gap-6 lg:grid-cols-2 font-sans">
       {/* Bar Chart: Stage Conversion */}
       <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-premium">
         <div className="flex items-center gap-2 border-b border-slate-50 pb-4 mb-4">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-indigo-650">
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50/70 text-indigo-600 border border-indigo-100/30">
             <BarChart3 className="h-4 w-4" />
           </div>
-          <h3 className="text-sm font-bold text-slate-950">
+          <h3 className="text-sm font-bold text-slate-950 font-display">
             Stage Conversion
           </h3>
         </div>
@@ -39,6 +39,12 @@ export default function AnalyticsCharts({
         <div className="h-64 mt-2">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={stageData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+              <defs>
+                <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#6366f1" />
+                  <stop offset="100%" stopColor="#4f46e5" />
+                </linearGradient>
+              </defs>
               <XAxis 
                 dataKey="stage" 
                 tickLine={false} 
@@ -52,18 +58,19 @@ export default function AnalyticsCharts({
                 tick={{ fill: '#94a3b8', fontSize: 10, fontWeight: 500 }}
               />
               <Tooltip 
-                cursor={{ fill: "#f8fafc", radius: 4 }} 
+                cursor={{ fill: "#f8fafc", radius: 6 }} 
                 contentStyle={{ 
-                  backgroundColor: '#ffffff', 
+                  backgroundColor: 'rgba(255, 255, 255, 0.9)', 
+                  backdropFilter: 'blur(8px)',
                   borderColor: '#f1f5f9', 
                   borderRadius: '12px',
                   boxShadow: '0 8px 30px rgba(0, 0, 0, 0.03)',
                   fontSize: '11px',
-                  fontWeight: 600,
+                  fontWeight: 700,
                   color: '#0f172a'
                 }}
               />
-              <Bar dataKey="value" fill="#4f46e5" radius={[6, 6, 0, 0]} maxBarSize={32} />
+              <Bar dataKey="value" fill="url(#barGrad)" radius={[6, 6, 0, 0]} maxBarSize={28} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -72,16 +79,16 @@ export default function AnalyticsCharts({
       {/* Pie Chart: Candidate Sources */}
       <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-premium">
         <div className="flex items-center gap-2 border-b border-slate-50 pb-4 mb-4">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-indigo-650">
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50/70 text-indigo-600 border border-indigo-100/30">
             <PieIcon className="h-4 w-4" />
           </div>
-          <h3 className="text-sm font-bold text-slate-950">
+          <h3 className="text-sm font-bold text-slate-955 font-display">
             Candidate Source Mix
           </h3>
         </div>
 
         {sourceData.length === 0 ? (
-          <div className="h-64 flex items-center justify-center text-xs font-semibold text-slate-400 bg-slate-50/20 rounded-2xl border border-dashed border-slate-200">
+          <div className="h-64 flex items-center justify-center text-xs font-semibold text-slate-400 bg-slate-50/10 rounded-2xl border border-dashed border-slate-200">
             No source metrics tracked yet.
           </div>
         ) : (
@@ -94,7 +101,7 @@ export default function AnalyticsCharts({
                   nameKey="source"
                   innerRadius={65}
                   outerRadius={85}
-                  paddingAngle={5}
+                  paddingAngle={4}
                 >
                   {sourceData.map((entry, index) => (
                     <Cell
@@ -106,12 +113,13 @@ export default function AnalyticsCharts({
                 </Pie>
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: '#ffffff', 
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)', 
+                    backdropFilter: 'blur(8px)',
                     borderColor: '#f1f5f9', 
                     borderRadius: '12px',
                     boxShadow: '0 8px 30px rgba(0, 0, 0, 0.03)',
                     fontSize: '11px',
-                    fontWeight: 600,
+                    fontWeight: 700,
                     color: '#0f172a'
                   }}
                 />

@@ -36,26 +36,27 @@ export default async function DashboardPage() {
     return (
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
         {/* Welcome Banner */}
-        <div className="relative overflow-hidden rounded-3xl border border-indigo-100/50 bg-gradient-to-br from-white via-white to-indigo-50/30 p-8 shadow-premium">
-          {/* Glow */}
-          <div className="absolute right-0 top-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-indigo-500/5 blur-2xl pointer-events-none" />
+        <div className="relative overflow-hidden rounded-3xl border border-indigo-100/50 bg-gradient-to-br from-white via-white to-indigo-50/20 p-8 shadow-premium animate-fade-in-up">
+          {/* Ambient Glows */}
+          <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-indigo-550/10 blur-[80px] pointer-events-none" />
+          <div className="absolute right-1/4 bottom-0 h-28 w-28 rounded-full bg-violet-500/5 blur-[60px] pointer-events-none" />
           
           <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="space-y-2.5">
-              <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-indigo-600 border border-indigo-100/50">
+            <div className="space-y-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50/70 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-indigo-600 border border-indigo-100/50">
                 <Sparkles className="h-3 w-3" />
                 Candidate Portal
               </span>
-              <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
+              <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 font-display">
                 Hello, {user.name}
               </h1>
-              <p className="max-w-xl text-sm leading-relaxed text-slate-500">
+              <p className="max-w-xl text-sm leading-relaxed text-slate-500 font-sans">
                 Track your active applications, review personalized AI coach recommendations, and prepare for upcoming interviews.
               </p>
             </div>
             <Link
               href="/jobs"
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-5 py-3 text-xs font-semibold text-white transition-all duration-200 hover:bg-indigo-600 shadow-sm hover:shadow-indigo-600/10 hover:-translate-y-0.5 active:scale-95 shrink-0"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-5.5 py-3 text-xs font-bold text-white transition-all duration-200 hover:bg-indigo-600 shadow-sm hover:shadow-indigo-600/10 hover:-translate-y-0.5 active:scale-95 shrink-0 cursor-pointer"
             >
               <span>Explore open positions</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -162,14 +163,24 @@ export default async function DashboardPage() {
                       )}
 
                       {/* Timeline status indicator */}
-                      <div className="pt-2">
-                        <div className="relative flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                          <div className="absolute left-0 right-0 top-1/2 h-0.5 -translate-y-1/2 bg-slate-100 -z-10" />
-                          <span className={`px-2 py-0.5 rounded-md bg-white border ${app.stage === 'APPLIED' ? 'text-indigo-650 border-indigo-200 bg-indigo-50/20' : 'border-slate-100'}`}>Applied</span>
-                          <span className={`px-2 py-0.5 rounded-md bg-white border ${app.stage === 'SCREENED' ? 'text-indigo-650 border-indigo-200 bg-indigo-50/20' : 'border-slate-100'}`}>Screened</span>
-                          <span className={`px-2 py-0.5 rounded-md bg-white border ${app.stage === 'INTERVIEW' ? 'text-indigo-650 border-indigo-200 bg-indigo-50/20' : 'border-slate-100'}`}>Interview</span>
-                          <span className={`px-2 py-0.5 rounded-md bg-white border ${app.stage === 'OFFER' ? 'text-indigo-650 border-indigo-200 bg-indigo-50/20' : 'border-slate-100'}`}>Offer</span>
-                          <span className={`px-2 py-0.5 rounded-md bg-white border ${['HIRED', 'REJECTED'].includes(app.stage) ? 'text-indigo-650 border-indigo-200 bg-indigo-50/20' : 'border-slate-100'}`}>Decided</span>
+                      <div className="pt-3">
+                        <div className="relative flex items-center justify-between text-[9px] font-bold text-slate-400 uppercase tracking-wider">
+                          <div className="absolute left-0 right-0 top-1/2 h-[3px] -translate-y-1/2 bg-slate-100 rounded-full -z-10" />
+                          <div 
+                            className="absolute left-0 top-1/2 h-[3px] -translate-y-1/2 bg-indigo-500 rounded-full -z-10 transition-all duration-500" 
+                            style={{ 
+                              width: 
+                                app.stage === 'APPLIED' ? '0%' :
+                                app.stage === 'SCREENED' ? '25%' :
+                                app.stage === 'INTERVIEW' ? '50%' :
+                                app.stage === 'OFFER' ? '75%' : '100%'
+                            }} 
+                          />
+                          <span className={`px-2 py-0.5 rounded-md bg-white border transition-all ${app.stage === 'APPLIED' ? 'text-indigo-600 border-indigo-200 shadow-sm shadow-indigo-100/50 font-extrabold' : 'border-slate-100'}`}>Applied</span>
+                          <span className={`px-2 py-0.5 rounded-md bg-white border transition-all ${app.stage === 'SCREENED' ? 'text-indigo-600 border-indigo-200 shadow-sm shadow-indigo-100/50 font-extrabold' : 'border-slate-100'}`}>Screened</span>
+                          <span className={`px-2 py-0.5 rounded-md bg-white border transition-all ${app.stage === 'INTERVIEW' ? 'text-indigo-600 border-indigo-200 shadow-sm shadow-indigo-100/50 font-extrabold' : 'border-slate-100'}`}>Interview</span>
+                          <span className={`px-2 py-0.5 rounded-md bg-white border transition-all ${app.stage === 'OFFER' ? 'text-indigo-600 border-indigo-200 shadow-sm shadow-indigo-100/50 font-extrabold' : 'border-slate-100'}`}>Offer</span>
+                          <span className={`px-2 py-0.5 rounded-md bg-white border transition-all ${['HIRED', 'REJECTED'].includes(app.stage) ? 'text-indigo-600 border-indigo-200 shadow-sm shadow-indigo-100/50 font-extrabold' : 'border-slate-100'}`}>Decided</span>
                         </div>
                       </div>
                     </div>
@@ -271,26 +282,27 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden rounded-3xl border border-indigo-100/50 bg-gradient-to-br from-white via-white to-indigo-50/30 p-8 shadow-premium">
-        {/* Glow */}
-        <div className="absolute right-0 top-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-indigo-500/5 blur-2xl pointer-events-none" />
+      <div className="relative overflow-hidden rounded-3xl border border-indigo-100/50 bg-gradient-to-br from-white via-white to-indigo-50/20 p-8 shadow-premium animate-fade-in-up">
+        {/* Ambient Glows */}
+        <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-indigo-555/10 blur-[80px] pointer-events-none" />
+        <div className="absolute right-1/4 bottom-0 h-28 w-28 rounded-full bg-violet-500/5 blur-[60px] pointer-events-none" />
         
         <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="space-y-2.5">
-            <span className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-indigo-600 border border-indigo-100/50">
+          <div className="space-y-3">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50/70 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-indigo-600 border border-indigo-100/50">
               <Sparkles className="h-3 w-3" />
               Active System Overview
             </span>
-            <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
+            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 font-display">
               AI-ready pipeline overview
             </h1>
-            <p className="max-w-xl text-sm leading-relaxed text-slate-500">
+            <p className="max-w-xl text-sm leading-relaxed text-slate-500 font-sans">
               Track active roles, screen candidates using custom resume intelligence scoring, and visualize overall applicant status in one cohesive space.
             </p>
           </div>
           <Link
             href="/jobs"
-            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-5 py-3 text-xs font-semibold text-white transition-all duration-200 hover:bg-indigo-600 shadow-sm hover:shadow-indigo-600/10 hover:-translate-y-0.5 active:scale-95 shrink-0"
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-5.5 py-3 text-xs font-bold text-white transition-all duration-200 hover:bg-indigo-650 shadow-sm hover:shadow-indigo-600/10 hover:-translate-y-0.5 active:scale-95 shrink-0 cursor-pointer"
           >
             <span>View open roles</span>
             <ArrowRight className="h-3.5 w-3.5" />

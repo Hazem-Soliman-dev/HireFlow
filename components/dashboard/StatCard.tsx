@@ -29,22 +29,22 @@ export default function StatCard({
   };
 
   return (
-    <div className="rounded-2xl border border-slate-100/80 bg-white p-6 shadow-premium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card">
+    <div className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-premium transition-all duration-350 hover:-translate-y-1 hover:shadow-card hover:border-indigo-100/80">
       <div className="flex items-center justify-between">
-        <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-slate-500 transition-colors">
           {label}
         </p>
-        <div className={cn("flex h-9 w-9 items-center justify-center rounded-xl border", iconConfig.bg, iconConfig.text)}>
+        <div className={cn("flex h-9 w-9 items-center justify-center rounded-xl border transition-all duration-300 group-hover:scale-105", iconConfig.bg, iconConfig.text)}>
           {iconConfig.icon}
         </div>
       </div>
       <div className="mt-4 flex items-baseline justify-between">
-        <p className={cn("text-3xl font-bold tracking-tight text-slate-900", tone)}>
+        <p className={cn("text-3xl font-extrabold tracking-tight text-slate-900 font-display", tone)}>
           {value}
         </p>
       </div>
       {caption ? (
-        <p className="mt-2 text-xs font-medium text-slate-500">{caption}</p>
+        <p className="mt-2 text-[11px] font-medium text-slate-500/90 leading-relaxed">{caption}</p>
       ) : null}
     </div>
   );

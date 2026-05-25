@@ -65,18 +65,21 @@ function DroppableColumn({
   return (
     <div
       ref={setNodeRef}
-      className={`flex h-[500px] w-72 shrink-0 flex-col gap-4 rounded-2xl border bg-slate-50/30 p-4 transition-all duration-200 ${isOver ? "border-indigo-300 ring-4 ring-indigo-500/5 bg-indigo-50/10" : "border-slate-100"
-        }`}
+      className={`flex h-[520px] w-72 shrink-0 flex-col gap-4.5 rounded-2xl border p-4.5 transition-all duration-300 ${
+        isOver 
+          ? "border-indigo-400 ring-4 ring-indigo-500/5 bg-indigo-50/20" 
+          : "border-slate-200/60 bg-slate-50/20 shadow-[inset_0_1.5px_2px_rgba(0,0,0,0.005)]"
+      }`}
     >
-      <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
-        <span className={`rounded-lg px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${tone}`}>
+      <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+        <span className={`rounded-lg px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-wider ${tone} border border-current/10 shadow-sm`}>
           {label}
         </span>
-        <span className="rounded-md bg-white px-2 py-0.5 text-[10px] font-bold text-slate-500 border border-slate-100/80 shadow-sm">
+        <span className="rounded-lg bg-white px-2.5 py-0.5 text-[10px] font-extrabold text-slate-500 border border-slate-150 shadow-sm">
           {count}
         </span>
       </div>
-      <div className="flex flex-col gap-3.5 flex-1 overflow-y-auto pr-1">{children}</div>
+      <div className="flex flex-col gap-3 flex-1 overflow-y-auto pr-1 pb-1">{children}</div>
     </div>
   );
 }

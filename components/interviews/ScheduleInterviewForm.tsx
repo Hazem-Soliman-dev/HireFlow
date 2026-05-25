@@ -48,17 +48,17 @@ export default function ScheduleInterviewForm({
     <form
       ref={formRef}
       action={submit}
-      className="rounded-3xl border border-slate-100 bg-slate-50/20 p-5 space-y-4"
+      className="rounded-3xl border border-slate-150 bg-slate-50/10 p-5 space-y-5 font-sans"
     >
       <div className="grid gap-4.5 sm:grid-cols-2 lg:grid-cols-3">
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             Select Candidate
           </label>
           <select
             name="candidateId"
             required
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           >
             <option value="">Select candidate...</option>
             {candidates.map((candidate) => (
@@ -70,24 +70,24 @@ export default function ScheduleInterviewForm({
         </div>
         
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             Scheduled Time
           </label>
           <input
             name="scheduledAt"
             type="datetime-local"
             required
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             Duration
           </label>
           <select
             name="durationMinutes"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
             defaultValue="45"
           >
             <option value="30">30 minutes</option>
@@ -98,19 +98,19 @@ export default function ScheduleInterviewForm({
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             Interviewer Name
           </label>
           <input
             name="interviewerName"
             required
             placeholder="Morgan Reed"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             Interviewer Email
           </label>
           <input
@@ -118,40 +118,40 @@ export default function ScheduleInterviewForm({
             type="email"
             required
             placeholder="manager@company.com"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             Meeting Link / Room
           </label>
           <input
             name="meetingLink"
             placeholder="https://meet.google.com/..."
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           />
         </div>
 
         <div className="sm:col-span-2 lg:col-span-3 space-y-1.5">
-          <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+          <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             Physical Location (optional)
           </label>
           <input
             name="location"
             placeholder="On-site • HQ Room 4A"
-            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/10 focus:outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-sm focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 focus:outline-none"
           />
         </div>
       </div>
 
-      {error ? <p className="text-xs font-bold text-rose-600">{error}</p> : null}
+      {error ? <p className="text-xs font-bold text-rose-650">{error}</p> : null}
       
       <div className="flex justify-end border-t border-slate-100 pt-4">
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-bold text-white transition-all duration-200 hover:bg-indigo-600 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/10 active:scale-95 cursor-pointer"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-5.5 py-2.5 text-xs font-bold text-white transition-all duration-250 hover:bg-indigo-650 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/15 active:scale-95 cursor-pointer"
         >
           <CalendarPlus className="h-4 w-4" />
           <span>{pending ? "Sending Calendar Invite..." : "Send Invite"}</span>
