@@ -93,7 +93,7 @@ export default function LoginPage() {
               <form
                 key={role}
                 action={setRoleAction}
-                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-4.5 shadow-premium transition-all duration-250 hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-glow-indigo"
+                className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-5 shadow-premium transition-all duration-250 hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-glow-indigo"
               >
                 <input type="hidden" name="role" value={role} />
                 <div className="flex items-start gap-3.5">
@@ -118,7 +118,7 @@ export default function LoginPage() {
                 <div className="flex items-center justify-end border-t border-slate-50 mt-4 pt-3">
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-4.5 py-2.5 text-xs font-bold text-white transition-all duration-250 group-hover:bg-indigo-650 group-active:scale-[0.98] shadow-sm hover:shadow-indigo-600/10 cursor-pointer"
+                    className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-bold text-white transition-all duration-250 group-hover:bg-indigo-650 group-active:scale-[0.98] shadow-sm hover:shadow-indigo-600/10 cursor-pointer"
                   >
                     Enter Workspace
                   </button>

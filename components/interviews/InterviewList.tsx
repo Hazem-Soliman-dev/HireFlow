@@ -29,7 +29,7 @@ export default function InterviewList({
 
   return (
     <div className="max-h-[380px] overflow-y-auto pr-1 font-sans">
-      <div className="grid gap-4.5 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         {interviews.map((interview) => {
           const when = new Date(interview.scheduledAt).toLocaleString("en-US", {
             dateStyle: "medium",

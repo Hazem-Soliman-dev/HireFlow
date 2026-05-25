@@ -91,7 +91,7 @@ export default async function JobDetailPage({
             <div className="space-y-4 w-full">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50/70 text-indigo-600 border border-indigo-100/30 shrink-0">
-                  <Briefcase className="h-4.5 w-4.5" />
+                  <Briefcase className="h-4 w-4" />
                 </span>
                 <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 font-display">
                   {job.title}
@@ -118,7 +118,7 @@ export default async function JobDetailPage({
                 </div>
               </div>
 
-              <div className="rounded-2xl bg-slate-50/40 p-4.5 border border-slate-100">
+              <div className="rounded-2xl p-5 border border-slate-200/80 bg-transparent">
                 <h3 className="text-[10px] font-bold text-slate-450 uppercase tracking-widest mb-2 font-display">Role Description</h3>
                 <p className="text-sm leading-relaxed text-slate-600 font-sans">{job.description}</p>
               </div>
@@ -232,7 +232,7 @@ export default async function JobDetailPage({
                   No interview rounds scheduled yet.
                 </div>
               ) : (
-                <div className="grid gap-4.5 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2">
                   {myCandidate.interviews.map((interview) => {
                     const when = new Date(interview.scheduledAt).toLocaleString("en-US", {
                       dateStyle: "medium",
@@ -309,7 +309,7 @@ export default async function JobDetailPage({
           <div className="space-y-4 flex-1">
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50/70 text-indigo-600 border border-indigo-100/30 shrink-0">
-                <Briefcase className="h-4.5 w-4.5" />
+                <Briefcase className="h-4 w-4" />
               </span>
               <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 font-display">
                 {job.title}

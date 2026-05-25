@@ -65,7 +65,7 @@ function DroppableColumn({
   return (
     <div
       ref={setNodeRef}
-      className={`flex h-[520px] w-72 shrink-0 flex-col gap-4.5 rounded-2xl border p-4.5 transition-all duration-300 ${
+      className={`flex h-[520px] w-72 shrink-0 flex-col gap-4 rounded-2xl border p-5 transition-all duration-300 ${
         isOver 
           ? "border-indigo-400 ring-4 ring-indigo-500/5 bg-indigo-50/20" 
           : "border-slate-200/60 bg-slate-50/20 shadow-[inset_0_1.5px_2px_rgba(0,0,0,0.005)]"

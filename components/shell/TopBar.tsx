@@ -9,7 +9,7 @@ export default function TopBar({ role }: { role: Role }) {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5 lg:px-8">
         <div className="flex items-center gap-3">
           <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-650 to-violet-650 text-white shadow-md shadow-indigo-600/10 animate-float">
-            <Sparkles className="h-4.5 w-4.5" />
+            <Sparkles className="h-5 w-5" />
             <div className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-emerald-500 animate-pulse" />
           </div>
           <div>

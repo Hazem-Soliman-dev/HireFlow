@@ -44,7 +44,7 @@ export default async function JobsPage() {
         <NewJobForm action={createJob} />
       ) : (
         <div className="flex items-center gap-3 rounded-2xl border border-amber-100 bg-amber-50/40 p-5 text-xs text-amber-800 shadow-[inset_0_1px_2px_rgba(245,158,11,0.01)]">
-          <AlertCircle className="h-4.5 w-4.5 text-amber-500 shrink-0" />
+          <AlertCircle className="h-4 w-4 text-amber-500 shrink-0" />
           <p className="font-semibold leading-relaxed">
             You have read-only access to job postings in this role view. Switch perspectives to create new postings.
           </p>

@@ -56,7 +56,7 @@ export default async function DashboardPage() {
             </div>
             <Link
               href="/jobs"
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-5.5 py-3 text-xs font-bold text-white transition-all duration-200 hover:bg-indigo-600 shadow-sm hover:shadow-indigo-600/10 hover:-translate-y-0.5 active:scale-95 shrink-0 cursor-pointer"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-6 py-3 text-xs font-bold text-white transition-all duration-200 hover:bg-indigo-600 shadow-sm hover:shadow-indigo-600/10 hover:-translate-y-0.5 active:scale-95 shrink-0 cursor-pointer"
             >
               <span>Explore open positions</span>
               <ArrowRight className="h-3.5 w-3.5" />
@@ -302,7 +302,7 @@ export default async function DashboardPage() {
           </div>
           <Link
             href="/jobs"
-            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-5.5 py-3 text-xs font-bold text-white transition-all duration-200 hover:bg-indigo-650 shadow-sm hover:shadow-indigo-600/10 hover:-translate-y-0.5 active:scale-95 shrink-0 cursor-pointer"
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-6 py-3 text-xs font-bold text-white transition-all duration-200 hover:bg-indigo-650 shadow-sm hover:shadow-indigo-600/10 hover:-translate-y-0.5 active:scale-95 shrink-0 cursor-pointer"
           >
             <span>View open roles</span>
             <ArrowRight className="h-3.5 w-3.5" />

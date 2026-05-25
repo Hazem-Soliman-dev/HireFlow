@@ -73,7 +73,7 @@ export default function EditJobModal({
                 />
               </div>
 
-              <div className="grid gap-4.5 sm:grid-cols-2">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                     Department
@@ -120,14 +120,14 @@ export default function EditJobModal({
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-4.5 py-2.5 text-xs font-bold text-slate-500 transition hover:bg-slate-50 active:scale-95 duration-200 cursor-pointer"
+                  className="inline-flex items-center justify-center rounded-xl border border-slate-200 px-5 py-2.5 text-xs font-bold text-slate-500 transition hover:bg-slate-50 active:scale-95 duration-200 cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={pending}
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-5.5 py-2.5 text-xs font-bold text-white transition-all duration-250 hover:bg-indigo-650 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/15 active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-6 py-2.5 text-xs font-bold text-white transition-all duration-250 hover:bg-indigo-650 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/15 active:scale-95 cursor-pointer"
                 >
                   {pending ? "Saving..." : "Save Changes"}
                 </button>

@@ -50,7 +50,7 @@ export default function ScheduleInterviewForm({
       action={submit}
       className="rounded-3xl border border-slate-150 bg-slate-50/10 p-5 space-y-5 font-sans"
     >
-      <div className="grid gap-4.5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <div className="space-y-1.5">
           <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             Select Candidate
@@ -151,7 +151,7 @@ export default function ScheduleInterviewForm({
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-5.5 py-2.5 text-xs font-bold text-white transition-all duration-250 hover:bg-indigo-650 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/15 active:scale-95 cursor-pointer"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-6 py-2.5 text-xs font-bold text-white transition-all duration-250 hover:bg-indigo-650 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/15 active:scale-95 cursor-pointer"
         >
           <CalendarPlus className="h-4 w-4" />
           <span>{pending ? "Sending Calendar Invite..." : "Send Invite"}</span>

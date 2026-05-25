@@ -44,7 +44,7 @@ export default function MobileFooterNav() {
                 isActive ? "text-indigo-600" : "text-slate-500 hover:text-slate-800"
               )}
             >
-              <Icon className={cn("h-4.5 w-4.5 transition-all duration-200", isActive ? "text-indigo-600 stroke-[2.5]" : "text-slate-400")} />
+              <Icon className={cn("h-5 w-5 transition-all duration-200", isActive ? "text-indigo-600 stroke-[2.5]" : "text-slate-400")} />
               <span>{item.label}</span>
             </Link>
           );

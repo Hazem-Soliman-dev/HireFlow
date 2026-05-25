@@ -54,7 +54,7 @@ export default function CandidateForm({ jobId }: { jobId: string }) {
         </div>
       </div>
 
-      <form action={submit} className="grid gap-4.5 sm:grid-cols-2 lg:grid-cols-4">
+      <form action={submit} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-1.5">
           <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             Full Name
@@ -115,7 +115,7 @@ export default function CandidateForm({ jobId }: { jobId: string }) {
               onUploadError={(uploadError) => {
                 setError(uploadError.message);
               }}
-              className="ut-button:bg-indigo-600 ut-button:hover:bg-indigo-650 ut-button:rounded-xl ut-button:px-4.5 ut-button:py-2.5 ut-button:text-xs ut-button:font-bold ut-button:transition-all ut-button:duration-250 ut-button:shadow-sm ut-allowed-content:text-[10px] ut-allowed-content:text-slate-400/90"
+              className="ut-button:bg-indigo-600 ut-button:hover:bg-indigo-650 ut-button:rounded-xl ut-button:px-5 ut-button:py-2.5 ut-button:text-xs ut-button:font-bold ut-button:transition-all ut-button:duration-250 ut-button:shadow-sm ut-allowed-content:text-[10px] ut-allowed-content:text-slate-400/90"
             />
             {resumeUrl ? (
               <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-250/60 rounded-lg px-2.5 py-1.5 shadow-sm shadow-emerald-50">
@@ -139,7 +139,7 @@ export default function CandidateForm({ jobId }: { jobId: string }) {
           <button
             type="submit"
             disabled={pending}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-bold text-white transition-all duration-250 hover:bg-indigo-600 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/15 active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-6 py-2.5 text-xs font-bold text-white transition-all duration-250 hover:bg-indigo-600 disabled:opacity-75 hover:shadow-lg hover:shadow-indigo-600/15 active:scale-95 cursor-pointer"
           >
             <Sparkles className="h-4 w-4" />
             <span>{pending ? "Analyzing Resume with AI..." : "Attach and Score"}</span>
